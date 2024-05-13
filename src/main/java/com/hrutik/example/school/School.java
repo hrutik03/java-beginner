@@ -31,8 +31,7 @@ public class School {
     @JsonManagedReference
     private List<Student> students;
 
-    public School(List<Student> students, String name) {
-        this.students = students;
+    public School(String name) {
         this.name = name;
     }
 

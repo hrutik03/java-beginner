@@ -9,21 +9,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/school")
 public class SchoolController {
-    final SchoolRepository schoolRepository;
+    final private SchoolService schoolService;
 
-    public SchoolController(SchoolRepository schoolRepository) {
-        this.schoolRepository = schoolRepository;
+    public SchoolController(SchoolService schoolService) {
+        this.schoolService = schoolService;
     }
 
     @GetMapping
-    public ResponseEntity<List<School>> findAll() {
-        return ResponseEntity.ok(schoolRepository.findAll());
+    public ResponseEntity<List<SchoolDto>> findAll() {
+        return schoolService.findAllSchools();
     }
 
-    @PostMapping
-    public ResponseEntity<String> createSchool(@RequestBody School school) {
-        schoolRepository.save(school);
-        return ResponseEntity.ok("School Created Successfully");
+     @PostMapping
+    public ResponseEntity<SchoolDto> createSchool(@RequestBody SchoolDto schoolDto) {
+        return schoolService.createSchool(schoolDto);
     }
-
 }
