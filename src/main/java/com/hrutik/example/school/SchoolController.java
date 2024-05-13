@@ -20,7 +20,7 @@ public class SchoolController {
         return schoolService.findAllSchools();
     }
 
-     @PostMapping
+    @PostMapping
     public ResponseEntity<SchoolDto> createSchool(@RequestBody SchoolDto schoolDto) {
         return schoolService.createSchool(schoolDto);
     }

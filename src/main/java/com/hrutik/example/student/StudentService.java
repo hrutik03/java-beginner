@@ -19,7 +19,7 @@ public class StudentService {
 
     public ResponseEntity<StudentResponseDto> saveStudent (StudentDto studentDto) {
         var student = studentMapper.toStudent(studentDto);
-        var savedStudent = studentMapper.toStudentResponseDto(student);
+        var savedStudent = studentMapper.toStudentResponseDto(studentRepository.save(student));
         return ResponseEntity.ok(savedStudent);
     }
 
